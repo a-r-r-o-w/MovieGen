@@ -2,6 +2,21 @@
 
 Open reproduction of MovieGen by Meta (https://ai.meta.com/research/movie-gen/)
 
+### Modeling TODOs
+
+- [ ] Patch embedding
+- [ ] Scale + Shift modulation layers
+- [ ] Positional embeddings from [Patch n' Pack: NaViT, a Vision Transformer for any Aspect Ratio and Resolution](https://arxiv.org/abs/2307.06304)
+- [ ] Transformer blocks & Transformer (SwiGLU, RMSNorm, Self/Cross-Attn)
+- [ ] Spatial tiling in VAE, temporal tiling in transformer
+- [ ] Spatial upsampler
+
+### Initial Goals
+
+- [ ] TAE training code for image + video
+- [ ] Validating end-to-end training on tiny ~10000 image + video dataset
+- [ ] DeepSpeed/FSDP compatibility. Parallelism for future
+- [ ] Efficient dataset loading and bucket sampling mechanisms
 
 <details>
 <summary> Notes </summary>
@@ -49,6 +64,8 @@ Open reproduction of MovieGen by Meta (https://ai.meta.com/research/movie-gen/)
     - Model predicts $V_t' = u(X_t, P, t; \theta)$, where $\theta$ denotes model parameters, $P$ is the prompt condition and $X_t$ is the noisy latent sampled at timestep $t$.
     - The model is trained by minimizing the mean squared loss between ground truth velocity and model prediction.
   - > Empirically, we found that Flow Matching was more robust to the exact choice of noise schedules and it outperforms diffusion losses (see Section 3.6.2). Thus, we adopt Flow Matching for its simplicity and high performance.
-
+- Training and modeling details:
+  - Modeling params: 48 layers, 6144 embedding dimension, 16384 feedforward dimension, 48 attention heads, SwiGLU activations, RMSNorm.
+  - FPS is appended to text prompts as "FPS-16" or "FPS-24". 16 and 24 are the only ones used.
 
 </details>
