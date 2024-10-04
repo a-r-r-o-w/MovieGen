@@ -2,6 +2,15 @@
 
 Open reproduction of MovieGen by Meta (https://ai.meta.com/research/movie-gen/)
 
+### Modeling TODOs
+
+- [ ] Patch embedding
+- [ ] Scale + Shift modulation layers
+- [ ] Positional embeddings from [Patch n' Pack: NaViT, a Vision Transformer for any Aspect Ratio and Resolution](https://arxiv.org/abs/2307.06304)
+- [ ] Transformer blocks & Transformer (SwiGLU, RMSNorm, Self/Cross-Attn)
+- [ ] Spatial tiling in VAE, temporal tiling in transformer
+- [ ] Spatial upsampler
+
 ### Initial Goals
 
 - [ ] TAE training code for image + video
