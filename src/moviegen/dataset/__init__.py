@@ -1,1 +1,1 @@
-from .dataset import VideoDataset, VideoDatasetWithResizing, BucketSampler
+from .dataset import BucketSampler, VideoDataset, VideoDatasetWithResizing
